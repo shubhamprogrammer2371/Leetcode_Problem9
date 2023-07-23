@@ -1,0 +1,67 @@
+********************************* Without Converting the number into string ****************************************
+
+
+bool isPalindrome(int x){
+    if(x<0)
+        return 0;
+    else{
+        int temp=x,rem=0,pali=0;
+        while(temp!=0){
+            rem = temp%10;
+            pali = pali*10+rem;
+            temp=temp/10;
+        }
+        if(pali == x)
+            return 1;
+        else
+            return 0;
+    }
+}
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+bool isPalindrome(int x){
+    if(x<0 || x!=0 && x%10 ==0 ) return false;
+    int check=0;
+    while(x>check){
+        check = check*10 + x%10;
+        x/=10;
+    }
+    return (x==check || x==check/10);
+}
+
+
+********************************* Converting the number into string ****************************************
+
+
+bool isPalindrome(int x){
+    if(x<0)
+        return 0;
+    else{
+        int i = 0, temp = x, k = 0, lengthOfArrays;
+        char actual_number[15], reverse_number[15];
+        while (temp != 0)
+        {
+            actual_number[k] = temp % 10;
+            temp /= 10;
+            k++;
+        }
+        lengthOfArrays = k;
+        while ((k - 1) >= 0)
+        {
+            reverse_number[i] = actual_number[(k - 1)];
+            i++;
+            k--;
+        }
+        for (int i = 0; i < lengthOfArrays; i++)
+        {
+            if (actual_number[i] != reverse_number[i])
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+}
